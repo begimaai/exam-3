@@ -1,0 +1,77 @@
+const toggleBtn = document.querySelector('.first-content__btn')
+const contact = document.querySelector('.modal-window')
+const toggleClose = document.querySelector('.bg')
+const modalWindow = document.querySelector('.modal-window_content')
+
+toggleBtn.addEventListener('click',() =>{
+    contact.style.display = 'block';
+    window.scroll({top: 0, left: 0});
+})
+window.addEventListener('keydown',function(e) {
+    if (e.keyCode === 27 ){
+        contact.style.display = 'none';
+        window.scroll({top: 0, left: 0});
+    }
+})
+toggleClose.addEventListener('click',()=>{
+    contact.style.display = 'none'
+    window.scroll({top: 0, left: 0})
+} )
+modalWindow.addEventListener('click', ()=>{
+    contact.style.display = 'block'
+    window.scroll({top: 0, left: 0})
+})
+
+const form = document.querySelector('.form')
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const inputName = e.target[0].value,
+    inputEmail = e.target[1].value,
+    textarea = e.target[2].value;
+    const form = {
+        name: ' ',
+        email: ' ',
+        textarea:' ',
+    }
+    form.name = inputName;
+    form.email = inputEmail;
+    form.textarea = textarea;
+    console.log(form);
+
+    e.target.reset();
+});
+
+const modal = document.getElementById('myModal');
+const clicked = document.getElementsByClassName('img-wrap');
+const modalImg = document.getElementById("img01");
+const captionText = document.getElementById("caption");
+const closeBg = document.querySelector('#modal-bg')
+const images = document.getElementsByClassName('myImages');
+
+
+for (let i = 0; i < images.length; i++) {
+let img = images[i];
+img.onclick = function() {
+    modal.style.display = "block";
+    modalImg.src = this.src;
+}}
+
+
+let closeBtn = document.getElementsByClassName("close")[0];
+
+closeBtn.onclick = function() {
+    modal.style.display = "none";
+}
+closeBg.onclick = function() {
+    modal.style.display = "none";
+}
+modalImg.onclick = function() {
+    modal.style.display = "block";
+}
+window.addEventListener('keydown',function(e) {
+    if (e.keyCode === 27 ){
+    modal.style.display = "none";
+    window.scroll({top: 500, left: 0});
+    }
+})
